@@ -11,25 +11,29 @@ public class Task0016 {
 		for (int i = 0; i <= 9; i++)
 			mas1[i] = sc.nextInt();
 		sc.close();
-		int c=1;
-		int k=0;
-		int t=0;
-		int y=0;
-		
-			for (int i=1;i<10;i++)
+		int c = 1;
+		int k = 0;
+		int t = 0;
+		int y = 0;
 
-		{ 
-			if (mas1[i] >= mas1[i-1] ){
-				
+		for (int i = 1; i < 10; i++)
+
+		{
+			if (mas1[i] >= mas1[i - 1]) {
+
 				c++;
-			    k=i;	}
-			else if(t<c){t=c;c=0;y=k;k=0;}
-			 	
+				k = i;
+			} else if (t < c) {
+				t = c;
+				c = 0;
+				y = k;
+				k = 0;
+			}
+
 		}
-			System.out.println(y);
-			System.out.println(t);
-			
-			
+		System.out.println(y);
+		System.out.println(t);
+
 	}
 
 }

@@ -12,20 +12,20 @@ public class Task0012 {
 		sc.close();
 		int max = mas1[0];
 		int min = mas1[0];
-		
+
 		for (int i = 0; i <= 9; i++)
-			
+
 		{
-            if (mas1[i] > max)
+			if (mas1[i] > max)
 				max = mas1[i];
 			if (mas1[i] < min)
 				min = mas1[i];
-			}
-	//	System.out.println(max+" "+min);
-		for (int i = 0; i <= 9; i++){
-		 if (mas1[i]>(max+min)/2)
-		
-		 System.out.print(i+1+" ");}
-		
-}
+		}
+		for (int i = 0; i <= 9; i++) {
+			if (mas1[i] > (max + min) / 2)
+
+				System.out.print(i + 1 + " ");
+		}
+
 	}
+}

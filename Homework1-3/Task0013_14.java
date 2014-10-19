@@ -24,27 +24,28 @@ public class Task0013_14 {
 					c = 1;
 			}
 			a += c;
-			
+
 		}
-        int k=0;
-		int mas2[] = new int[a+1];
+		int k = 0;
+		int mas2[] = new int[a + 1];
 		a = 0;
 		for (int i = 0; i < mas1.length; i++) { //
 			for (int j = 0; j < mas1.length; j++) {
 				if ((mas1[i] == mas1[j]) & (i != j)) {
 					c = 0;
-					a=0;
+					a = 0;
 					break;
-					
-				}
-				else
+
+				} else
 					c = i;
-                    a=1;}k=a+k;
-                    if(a!=0)
-			mas2[k] = mas1[c];
-			
+				a = 1;
+			}
+			k = a + k;
+			if (a != 0)
+				mas2[k] = mas1[c];
+
 		}
-		//System.out.println(a);
+		// System.out.println(a);
 		for (int i = 1; i < mas2.length; i++)
 			System.out.print(mas2[i] + " ");
 

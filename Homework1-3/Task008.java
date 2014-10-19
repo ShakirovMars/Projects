@@ -1,5 +1,7 @@
 package Homework;
+
 import java.util.Scanner;
+
 public class Task008 {
 	private static Scanner sc;
 
@@ -23,6 +25,3 @@ public class Task008 {
 	}
 
 }
-
-		
-
