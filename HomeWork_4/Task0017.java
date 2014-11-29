@@ -8,26 +8,39 @@ public class Task0017 {
 		System.out.println("¬ведите число элементов массива ");
 		Scanner sc = new Scanner(System.in);
 		int n = sc.nextInt();
-		double mas1[] = new double[n];
+		int mas1[] = new int[n];
 		System.out.println("¬ведите числа массива");
 
 		for (int i = 0; i < n; i++) {
-			mas1[i] = sc.nextDouble();
+			mas1[i] = sc.nextInt();
 		}
+
+		int r = 0;
+		int max = 0;
 		sc.close();
 
-		int k = 0;
+		for (int i = 1; i < n - 1; i = i + 2) {
+			if (mas1[i] < mas1[i - 1]) {
+				r = r + 1;
+			}
+			if (mas1[i] < mas1[i + 1]) {
+				r = r + 1;
+			} else {
+				if (r > max) {
+					max = r + 1;
+				}
+				i--;
+				r = 0;
+			}
 
-		for (int i = 0; i < n; i++) {
-
-			if (mas1[i] < 0) {
-				System.out.println("не верно");
-				k = 1;
-				break;
-			} else
-				k = 0;
 		}
-		if (k == 0)
-			System.out.println("верно");
+		if (max == 0) {
+			r = r + 1;
+			System.out.println("длина : " + r);
+		} else {
+
+			System.out.println(" длина : " + max);
+		}
+
 	}
 }

@@ -14,11 +14,20 @@ public class Task0020 {
 		for (int i = 0; i < n; i++)
 			mas1[i] = sc.nextInt();
 		sc.close();
-		for (int i = 0; i < n; i++){
-		if((mas1[i]>mas1[i+1])&(mas1[i+1] <mas1[i+2]))
+		
+		
+		
+		
+		for (int i = 0; i < n; i=i+3){
+		if((mas1[i]>mas1[i+1])&(mas1[i+1] <mas1[i+3])){
 		k++;
-		
-		
+		}if (k==0) 
+			for (int j = 1; j < n-1; j=j+3){
+			if((mas1[i]>mas1[i+1])&(mas1[i+1] <mas1[i+3])){
+				k++;
+			
+			
+		}
 		} System.out.println(k);
 	}
-}
+}}
