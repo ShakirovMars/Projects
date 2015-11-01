@@ -9,14 +9,14 @@ public class PersonModel {
 	private String password = null;
 	private String sex = null;
 	private String subscription = null;
-	private String inf=null;
+	private String inf = null;
 
 	public PersonModel(String email, String password, String sex, String subscription, String inf) {
 		this.email = email;
 		this.password = password;
 		this.sex = sex;
 		this.subscription = subscription;
-		this.inf=inf;
+		this.inf = inf;
 	}
 
 	public String getInf() {
@@ -85,7 +85,7 @@ public class PersonModel {
 	}
 
 	public boolean checkEmailDb() {
-		DB db = new DB();
+		 DbRequest db = new  DbRequest();
 		boolean checkPerson = false;
 		if (db.checkEmail(email) == true) {
 			checkPerson = true;
@@ -93,17 +93,32 @@ public class PersonModel {
 
 		return checkPerson;
 	}
+
 	public boolean checkPerson() {
-		DB db = new DB();
+		 DbRequest db = new  DbRequest();
 		boolean checkPerson = false;
-		if (db.checkPerson(email,password) == true) {
+		if (db.checkPerson(email, password) == true) {
 			checkPerson = true;
 		}
 
 		return checkPerson;
 	}
-	
-	
+
+	public boolean checkSex() {
+		boolean checkSex = false;
+		if (sex != null) {
+			checkSex = true;
+		}
+		return checkSex;
+	}
+
+	public boolean checkInf() {
+		boolean checkInf = false;
+		if (inf.length() < 50) {
+			checkInf = true;
+		}
+		return checkInf;
+	}
 
 	public boolean checkData() {
 		boolean checkData = false;
@@ -117,15 +132,15 @@ public class PersonModel {
 	public boolean addPerson() {
 		boolean addPerson = false;
 		if (checkData() == true) {
-			DB db = new DB();
-			db.add(email, password, sex, subscription,inf);
+			 DbRequest db = new  DbRequest();
+			db.add(email, password, sex, subscription, inf);
 			addPerson = true;
 		}
 		return addPerson;
 	}
 
 	public ArrayList<PersonModel> giveData() {
-		DB db = new DB();
+		 DbRequest db = new  DbRequest();
 		ArrayList<PersonModel> persons = db.giveData();
 		return persons;
 

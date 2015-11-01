@@ -1,0 +1,7 @@
+CREATE TABLE Users(
+    id int IDENTITY (1 ,1),
+    email  VARCHAR(50)  NOT NULL PRIMARY KEY,
+    pass VARCHAR(5) NOT NULL,
+    sex  VARCHAR(10) NOT NULL,
+    sub  VARCHAR(10) NOT NULL,
+	inf  VARCHAR(10) NOT NULL);

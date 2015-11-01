@@ -34,13 +34,13 @@ public class ServletController extends HttpServlet {
 		
 		String subscription = request.getParameter("subscription");
 		String remember = request.getParameter("remember");
-		String inf=request.getParameter("text1").trim();
+		String inf=request.getParameter("text1").trim().replaceAll("\r\n", "<br>");
 		if (subscription != null) {
 			subscription = "signed";
 		} else
 			subscription = "no signed";
 
-		if (email != null && pass != null && sex != null) {
+		if (email != null && pass != null && sex != null && inf.length()<50) {
 			PersonModel person = new PersonModel(email, pass, sex, subscription,inf);
 
 			if (person.addPerson() == true) {

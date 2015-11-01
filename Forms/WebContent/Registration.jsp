@@ -9,17 +9,13 @@
 <script type="text/javascript">
 
 var count=50;
-function load1()
-{
- document.reg.t1.value=count;
- document.reg.t2.value=count;
-}
+
 function text1Change()
 {
  a=document.reg.text1.value.length;
- if((a)>count)document.reg.text1.value=document.reg.text1.value.substring(0,count);
+ if((a)>count) document.reg.text1.value=document.reg.text1.value.substring(0,count);
  a=document.reg.text1.value.length;
- document.reg.t2.value=count-a;
+ document.getElementById('change').innerHTML=count-a;
 }
 function valid(){
 	
@@ -57,7 +53,7 @@ function valid(){
 </script>
 </head>
 <link rel="stylesheet" type="text/css" href="Registration.css">
-<body onload=load1()>
+<body >
 	<div class="form">
 		<form name="reg" id="form"   action="http://localhost:8080/Forms/ServletController" method="Post" onsubmit='return valid()' >
 			<fieldset title="Ввод данных">
@@ -73,11 +69,12 @@ function valid(){
 				<br>Желаете подписаться? 
 				<input name="subscription" type="checkbox" value="signed">
 				<br>О себе:
-				<br><textarea name="text1" rows=5 cols=30  onkeyup="text1Change()"></textarea>
+				<br><textarea name="text1" rows=5 cols=30 maxlength="50" onkeyup="text1Change()"></textarea>
                  Ограничение символов:
-                 <input type="text" name="t1"  size="4" maxlength="4" disabled><br>
+                  50<br>
                  Осталось:
-                <input type="text" name="t2"  size="4" maxlength="4" disabled>
+                 <span id='change'></span>
+
 			    <br><input type="submit" name="shipping" value="Отправить">
 				<input type="reset" name="Reset" value="Очистить форму">
 			    <br>*- поля обязательные для заполнения!
