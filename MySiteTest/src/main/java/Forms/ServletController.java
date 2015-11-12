@@ -1,0 +1,69 @@
+package Forms;
+
+import java.io.IOException;
+
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+@WebServlet("/ServletController")
+public class ServletController extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+
+	public ServletController() {
+		super();
+
+	}
+
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		doPost(request, response);
+	}
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+	
+		String email = request.getParameter("email").trim();
+		String pass = request.getParameter("pass");
+		String sex = request.getParameter("sex");
+		
+		String subscription = request.getParameter("subscription");
+		String remember = request.getParameter("remember");
+		String inf=request.getParameter("text1").trim().replaceAll("\r\n", "<br>");
+		if (subscription != null) {
+			subscription = "signed";
+		} else
+			subscription = "no signed";
+
+		if (email != null && pass != null && sex != null && inf.length()<50) {
+			PersonModel person = new PersonModel(email, pass, sex, subscription,inf);
+
+			if (person.addPerson() == true) {
+				if (remember != null) {
+					Cookie cookieEmail = new Cookie("email", email);
+					response.addCookie(cookieEmail);
+					Cookie cookiePass = new Cookie("password", pass);
+					response.addCookie(cookiePass);
+
+				}
+				PersonModel personIn;
+				personIn=person.checkPerson();
+			    request.setAttribute("inf",personIn);
+			  
+				RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/WEB-INF/views/Main.jsp");
+				dispatcher.forward(request, response);
+			} else {
+				RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/views/RepeatReg.jsp");
+				dispatcher.forward(request, response);
+			}
+		} else {
+			RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/views/RepeatReg.jsp");
+			dispatcher.forward(request, response);
+		}
+	}
+
+}
